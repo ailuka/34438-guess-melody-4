@@ -17,6 +17,7 @@ exports[`Render App App rendered correctly 1`] = `
   <button
     className="welcome__button"
     onClick={[Function]}
+    type="button"
   >
     <span
       className="visually-hidden"
