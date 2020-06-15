@@ -12,6 +12,7 @@ const WelcomeScreen = (props) => {
       <button
         className="welcome__button"
         onClick={onWelcomeButtonClick}
+        type="button"
       >
         <span className="visually-hidden">Начать игру</span>
       </button>
