@@ -76,13 +76,85 @@ exports[`src/artist-question-screen.jsx when there is no questions should render
         <div
           className="track__status"
         >
-          <audio />
+          <audio
+            src="https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg"
+          />
         </div>
       </div>
     </div>
     <form
       className="game__artist"
-    />
+    >
+      <div
+        className="artist"
+      >
+        <input
+          className="artist__input visually-hidden"
+          id="answer-0"
+          name="answer"
+          onChange={[Function]}
+          type="radio"
+          value="artist-0"
+        />
+        <label
+          className="artist__name"
+          htmlFor="answer-0"
+        >
+          <img
+            alt="Пелагея"
+            className="artist__picture"
+            src="https://api.adorable.io/avatars/128/1"
+          />
+          Пелагея
+        </label>
+      </div>
+      <div
+        className="artist"
+      >
+        <input
+          className="artist__input visually-hidden"
+          id="answer-1"
+          name="answer"
+          onChange={[Function]}
+          type="radio"
+          value="artist-1"
+        />
+        <label
+          className="artist__name"
+          htmlFor="answer-1"
+        >
+          <img
+            alt="Краснознаменная дивизия имени моей бабушки"
+            className="artist__picture"
+            src="https://api.adorable.io/avatars/128/2"
+          />
+          Краснознаменная дивизия имени моей бабушки
+        </label>
+      </div>
+      <div
+        className="artist"
+      >
+        <input
+          className="artist__input visually-hidden"
+          id="answer-2"
+          name="answer"
+          onChange={[Function]}
+          type="radio"
+          value="artist-2"
+        />
+        <label
+          className="artist__name"
+          htmlFor="answer-2"
+        >
+          <img
+            alt="Lorde"
+            className="artist__picture"
+            src="https://api.adorable.io/avatars/128/3"
+          />
+          Lorde
+        </label>
+      </div>
+    </form>
   </section>
 </section>
 `;
