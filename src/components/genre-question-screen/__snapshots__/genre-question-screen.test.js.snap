@@ -67,6 +67,7 @@ exports[`src/genre-question-screen.jsx when there is no questions should render 
     </h2>
     <form
       className="game__tracks"
+      onSubmit={[Function]}
     >
       <div
         className="track"
@@ -86,6 +87,7 @@ exports[`src/genre-question-screen.jsx when there is no questions should render 
           className="game__answer"
         >
           <input
+            checked={false}
             className="game__input visually-hidden"
             id="answer-0"
             name="answer"
@@ -119,6 +121,7 @@ exports[`src/genre-question-screen.jsx when there is no questions should render 
           className="game__answer"
         >
           <input
+            checked={false}
             className="game__input visually-hidden"
             id="answer-1"
             name="answer"
@@ -152,6 +155,7 @@ exports[`src/genre-question-screen.jsx when there is no questions should render 
           className="game__answer"
         >
           <input
+            checked={false}
             className="game__input visually-hidden"
             id="answer-2"
             name="answer"
@@ -185,6 +189,7 @@ exports[`src/genre-question-screen.jsx when there is no questions should render 
           className="game__answer"
         >
           <input
+            checked={false}
             className="game__input visually-hidden"
             id="answer-3"
             name="answer"
@@ -202,7 +207,6 @@ exports[`src/genre-question-screen.jsx when there is no questions should render 
       </div>
       <button
         className="game__submit button"
-        onClick={[Function]}
         type="submit"
       >
         Ответить
