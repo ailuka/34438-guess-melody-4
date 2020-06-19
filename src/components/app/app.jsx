@@ -5,10 +5,8 @@ import WelcomeScreen from "../welcome-screen/welcome-screen.jsx";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.jsx";
 
-const welcomeButtonHandler = () => {};
-
 const App = (props) => {
-  const {errorsCount} = props;
+  const {errorsCount, questions} = props;
 
   return (
     <BrowserRouter>
@@ -16,14 +14,20 @@ const App = (props) => {
         <Route exact path="/">
           <WelcomeScreen
             errorsCount={errorsCount}
-            onWelcomeButtonClick={welcomeButtonHandler}
+            onWelcomeButtonClick={() => null}
           />
         </Route>
         <Route exact path="/dev-artist">
-          <ArtistQuestionScreen/>
+          <ArtistQuestionScreen
+            question={questions[1]}
+            onAnswerClick={() => null}
+          />
         </Route>
         <Route exact path="/dev-genre">
-          <GenreQuestionScreen/>
+          <GenreQuestionScreen
+            question={questions[0]}
+            onAnswerClick={() => null}
+          />
         </Route>
       </Switch>
     </BrowserRouter>
@@ -32,6 +36,7 @@ const App = (props) => {
 
 App.propTypes = {
   errorsCount: PropTypes.number.isRequired,
+  questions: PropTypes.array.isRequired,
 };
 
 export default App;
