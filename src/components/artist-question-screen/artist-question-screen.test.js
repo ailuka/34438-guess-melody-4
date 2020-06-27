@@ -21,7 +21,7 @@ const question = {
 };
 
 describe(`src/artist-question-screen.jsx`, () => {
-  describe(`when there is no questions`, () => {
+  describe(`when there is a question`, () => {
     it(`should render`, () => {
       const tree = renderer.create(
           <ArtistQuestionScreen
