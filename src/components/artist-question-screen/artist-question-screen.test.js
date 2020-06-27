@@ -27,7 +27,11 @@ describe(`src/artist-question-screen.jsx`, () => {
           <ArtistQuestionScreen
             question={question}
             onAnswerClick={() => null}
-          />
+          />, {
+            createNodeMock: () => {
+              return {};
+            },
+          }
       )
       .toJSON();
 

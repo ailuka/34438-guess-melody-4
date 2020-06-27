@@ -27,7 +27,11 @@ describe(`src/genre-question-screen.jsx`, () => {
           <GenreQuestionScreen
             question={question}
             onAnswerClick={() => null}
-          />
+          />, {
+            createNodeMock: () => {
+              return {};
+            }
+          }
       )
       .toJSON();
 

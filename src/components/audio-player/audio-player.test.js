@@ -17,7 +17,11 @@ describe(`src/audio-player.jsx`, () => {
           <AudioPlayer
             isPlaying={false}
             src={song.src}
-          />
+          />, {
+            createNodeMock: () => {
+              return {};
+            },
+          }
       )
       .toJSON();
 
