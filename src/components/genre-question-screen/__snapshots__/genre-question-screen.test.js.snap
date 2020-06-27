@@ -19,15 +19,15 @@ exports[`src/genre-question-screen.jsx when there is a question should render 1`
       className="track"
     >
       <button
-        className="track__button track__button--play"
+        className="track__button track__button--pause"
+        disabled={true}
+        onClick={[Function]}
         type="button"
       />
       <div
         className="track__status"
       >
-        <audio
-          src="https://upload.wikimedia.org/wikipedia/commons/3/38/Stalker-Last_Laugh.ogg"
-        />
+        <audio />
       </div>
       <div
         className="game__answer"
@@ -54,14 +54,14 @@ exports[`src/genre-question-screen.jsx when there is a question should render 1`
     >
       <button
         className="track__button track__button--play"
+        disabled={true}
+        onClick={[Function]}
         type="button"
       />
       <div
         className="track__status"
       >
-        <audio
-          src="https://upload.wikimedia.org/wikipedia/commons/4/44/Blues_en_F_-_tempo_60_%C3%A0_120.ogg"
-        />
+        <audio />
       </div>
       <div
         className="game__answer"
@@ -88,14 +88,14 @@ exports[`src/genre-question-screen.jsx when there is a question should render 1`
     >
       <button
         className="track__button track__button--play"
+        disabled={true}
+        onClick={[Function]}
         type="button"
       />
       <div
         className="track__status"
       >
-        <audio
-          src="https://upload.wikimedia.org/wikipedia/commons/2/21/03_Turning_Points.ogg"
-        />
+        <audio />
       </div>
       <div
         className="game__answer"
@@ -122,14 +122,14 @@ exports[`src/genre-question-screen.jsx when there is a question should render 1`
     >
       <button
         className="track__button track__button--play"
+        disabled={true}
+        onClick={[Function]}
         type="button"
       />
       <div
         className="track__status"
       >
-        <audio
-          src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Dr_House.ogg"
-        />
+        <audio />
       </div>
       <div
         className="game__answer"
