@@ -9,14 +9,36 @@ const mock = {
 };
 
 describe(`src/audio-player.jsx`, () => {
-  describe(`when there is a song`, () => {
-    it(`should render`, () => {
+  describe(`when the song is paused`, () => {
+    it(`should render with play button`, () => {
       const {song} = mock;
 
       const tree = renderer.create(
           <AudioPlayer
             isPlaying={false}
             src={song.src}
+            onPlayButtonClick={() => null}
+          />, {
+            createNodeMock: () => {
+              return {};
+            },
+          }
+      )
+      .toJSON();
+
+      expect(tree).toMatchSnapshot();
+    });
+  });
+
+  describe(`when the song is playing`, () => {
+    it(`should render with pause button`, () => {
+      const {song} = mock;
+
+      const tree = renderer.create(
+          <AudioPlayer
+            isPlaying={true}
+            src={song.src}
+            onPlayButtonClick={() => null}
           />, {
             createNodeMock: () => {
               return {};
