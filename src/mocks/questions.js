@@ -14,7 +14,7 @@ export default [
       src: `https://upload.wikimedia.org/wikipedia/commons/2/21/03_Turning_Points.ogg`,
       genre: `jazz`,
     }, {
-      src: `https://upload.wikimedia.org/wikipedia/commons/2/2f/Dr_House.ogg`,
+      src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `rock`,
     }],
   },

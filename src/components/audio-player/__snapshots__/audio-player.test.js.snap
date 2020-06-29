@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`src/audio-player.jsx when the song is paused should render with play button 1`] = `
+Array [
+  <button
+    className="track__button track__button--play"
+    disabled={true}
+    onClick={[Function]}
+    type="button"
+  />,
+  <div
+    className="track__status"
+  >
+    <audio />
+  </div>,
+]
+`;
+
+exports[`src/audio-player.jsx when the song is playing should render with pause button 1`] = `
+Array [
+  <button
+    className="track__button track__button--pause"
+    disabled={true}
+    onClick={[Function]}
+    type="button"
+  />,
+  <div
+    className="track__status"
+  >
+    <audio />
+  </div>,
+]
+`;
