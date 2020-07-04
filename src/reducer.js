@@ -1,5 +1,6 @@
 import {extend} from "./utils.js";
 import questions from "./mocks/questions.js";
+import {GameType} from "./const.js";
 
 const initialState = {
   maxMistakes: 3,
@@ -13,8 +14,34 @@ const ActionType = {
   INCREMENT_STEP: `INCREMENT_STEP`,
 };
 
+const isArtistAnswerCorrect = (question, userAnswer) => {
+  return userAnswer.artist === question.song.artist;
+};
+
+const isGenreAnswerCorrect = (question, userAnswer) => {
+  return userAnswer.every((it, i) => {
+    return it === (question.answers[i].genre === question.genre);
+  });
+};
+
 const ActionCreator = {
-  incrementMistakes: () => ({}),
+  incrementMistake: (question, userAnswer) => {
+    let answerIsCorrect = false;
+
+    switch (question.type) {
+      case GameType.ARTIST:
+        answerIsCorrect = isArtistAnswerCorrect(question, userAnswer);
+        break;
+      case GameType.GENRE:
+        answerIsCorrect = isGenreAnswerCorrect(question, userAnswer);
+        break;
+    }
+
+    return {
+      type: ActionType.INCREMENT_MISTAKES,
+      payload: answerIsCorrect ? 0 : 1,
+    };
+  },
 
   incrementStep: () => ({
     type: ActionType.INCREMENT_STEP,
@@ -25,13 +52,25 @@ const ActionCreator = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.INCREMENT_MISTAKES:
+      const mistakes = state.mistakes + action.payload;
+
+      if (mistakes >= state.maxMistakes) {
+        return extend({}, initialState);
+      }
+
       return extend(state, {
         mistakes: state.mistakes + action.payload,
       });
 
     case ActionType.INCREMENT_STEP:
+      let nextStep = state.step + action.payload;
+
+      if (nextStep >= state.questions.length) {
+        return extend({}, initialState);
+      }
+
       return extend(state, {
-        step: state.step + action.payload,
+        step: nextStep,
       });
   }
 

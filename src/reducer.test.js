@@ -69,4 +69,114 @@ describe(`Action creators work correctly`, () => {
       payload: 1,
     });
   });
+
+  it(`ActionCreator.incrementMistake returns payload: 0, when user answer for artist question is correct`, () => {
+    expect(ActionCreator.incrementMistake({
+      type: `artist`,
+      song: {
+        artist: `correct`,
+        src: ``,
+      },
+      answers: [
+        {
+          picture: ``,
+          artist: `correct`,
+        },
+        {
+          picture: ``,
+          artist: `incorrect-1`,
+        },
+        {
+          picture: ``,
+          artist: `incorrect-2`,
+        }
+      ]
+    }, {
+      picture: ``,
+      artist: `correct`,
+    })).toEqual({
+      type: ActionType.INCREMENT_MISTAKES,
+      payload: 0,
+    });
+  });
+
+  it(`ActionCreator.incrementMistake returns payload: 1, when user answer for artist question is incorrect`, () => {
+    expect(ActionCreator.incrementMistake({
+      type: `artist`,
+      song: {
+        artist: `correct`,
+        src: ``,
+      },
+      answers: [
+        {
+          picture: ``,
+          artist: `correct`,
+        },
+        {
+          picture: ``,
+          artist: `incorrect-1`,
+        },
+        {
+          picture: ``,
+          artist: `incorrect-2`,
+        }
+      ]
+    }, {
+      picture: ``,
+      artist: `incorrect`,
+    })).toEqual({
+      type: ActionType.INCREMENT_MISTAKES,
+      payload: 1,
+    });
+  });
+
+  it(`ActionCreator.incrementMistake returns payload: 0, when answer for genre question is correct`, () => {
+    expect(ActionCreator.incrementMistake({
+      type: `genre`,
+      genre: `jazz`,
+      answers: [
+        {
+          src: ``,
+          genre: `rock`,
+        }, {
+          src: ``,
+          genre: `jazz`,
+        }, {
+          src: ``,
+          genre: `blues`,
+        }, {
+          src: ``,
+          genre: `blues`,
+        },
+      ]
+    }, [false, true, false, false])).toEqual({
+      type: ActionType.INCREMENT_MISTAKES,
+      payload: 0,
+    });
+  });
+
+  it(`ActionCreator.incrementMistake returns payload: 1, when answer for genre question is incorrect`, () => {
+    expect(ActionCreator.incrementMistake({
+      type: `genre`,
+      genre: `jazz`,
+      answers: [
+        {
+          src: ``,
+          genre: `blues`,
+        }, {
+          src: ``,
+          genre: `blues`,
+        }, {
+          src: ``,
+          genre: `blues`,
+        }, {
+          src: ``,
+          genre: `blues`,
+        },
+      ]
+    }, [true, true, true, true])).toEqual({
+      type: ActionType.INCREMENT_MISTAKES,
+      payload: 1,
+    });
+  });
 });
