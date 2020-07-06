@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {App} from "./app.jsx";
+import App from "./app.jsx";
 
 const mockStore = configureStore([]);
 
@@ -47,17 +47,14 @@ describe(`Render App`, () => {
   it(`Render WelcomeScreen`, () => {
     const store = mockStore({
       mistakes: 0,
+      maxMistakes: 3,
+      questions,
+      step: -1,
     });
 
     const tree = renderer.create(
         <Provider store={store}>
-          <App
-            maxMistakes={3}
-            questions={questions}
-            onUserAnswer={() => null}
-            onWelcomeButtonClick={() => null}
-            step={-1}
-          />
+          <App/>
         </Provider>, {
           createNodeMock: () => {
             return {};
@@ -71,17 +68,14 @@ describe(`Render App`, () => {
   it(`Render GenreQuestionScreen`, () => {
     const store = mockStore({
       mistakes: 3,
+      maxMistakes: 3,
+      questions,
+      step: 0,
     });
 
     const tree = renderer.create(
         <Provider store={store}>
-          <App
-            maxMistakes={3}
-            questions={questions}
-            onUserAnswer={() => null}
-            onWelcomeButtonClick={() => null}
-            step={0}
-          />
+          <App/>
         </Provider>,
         {
           createNodeMock: () => {
@@ -96,17 +90,14 @@ describe(`Render App`, () => {
   it(`Render ArtistQuestionScreen`, () => {
     const store = mockStore({
       mistakes: 3,
+      maxMistakes: 3,
+      questions,
+      step: 1,
     });
 
     const tree = renderer.create(
         <Provider store={store}>
-          <App
-            maxMistakes={3}
-            questions={questions}
-            onUserAnswer={() => null}
-            onWelcomeButtonClick={() => null}
-            step={1}
-          />
+          <App/>
         </Provider>,
         {
           createNodeMock: () => {
