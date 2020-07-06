@@ -19,8 +19,12 @@ const isArtistAnswerCorrect = (question, userAnswer) => {
 };
 
 const isGenreAnswerCorrect = (question, userAnswer) => {
-  return userAnswer.every((it, i) => {
-    return it === (question.answers[i].genre === question.genre);
+  if (userAnswer.length !== question.answers.length) {
+    return false;
+  }
+
+  return question.answers.every((answer, i) => {
+    return (answer.genre === question.genre) === userAnswer[i];
   });
 };
 
@@ -77,4 +81,4 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
-export {reducer, ActionType, ActionCreator};
+export {reducer, ActionType, ActionCreator, isGenreAnswerCorrect};

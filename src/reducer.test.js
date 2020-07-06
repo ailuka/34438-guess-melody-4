@@ -1,4 +1,4 @@
-import {reducer, ActionType, ActionCreator} from "./reducer.js";
+import {reducer, ActionType, ActionCreator, isGenreAnswerCorrect} from "./reducer.js";
 import questions from "./test-mocks/test-mocks.js";
 
 it(`Reducer without additional parameters should return initial state`, () => {
@@ -177,6 +177,98 @@ describe(`Action creators work correctly`, () => {
     }, [true, true, true, true])).toEqual({
       type: ActionType.INCREMENT_MISTAKES,
       payload: 1,
+    });
+  });
+});
+
+describe(`isGenreAnswerCorrect`, () => {
+  describe(`No songs with the genre`, () => {
+    const question = {
+      type: `genre`,
+      genre: `jazz`,
+      answers: [
+        {
+          src: ``,
+          genre: `blues`,
+        }, {
+          src: ``,
+          genre: `blues`,
+        }, {
+          src: ``,
+          genre: `blues`,
+        }, {
+          src: ``,
+          genre: `blues`,
+        },
+      ]
+    };
+
+    it(`returns true, when user answer has no songs selected`, () => {
+      const userAnswer = [false, false, false, false];
+      expect(isGenreAnswerCorrect(question, userAnswer)).toEqual(true);
+    });
+
+    it(`returns false, when user answer has any song selected`, () => {
+      const userAnswer1 = [false, true, false, false];
+      expect(isGenreAnswerCorrect(question, userAnswer1)).toEqual(false);
+
+      const userAnswer2 = [true, false, false, false];
+      expect(isGenreAnswerCorrect(question, userAnswer2)).toEqual(false);
+
+      const userAnswer3 = [false, false, false, true];
+      expect(isGenreAnswerCorrect(question, userAnswer3)).toEqual(false);
+    });
+  });
+
+  describe(`Some songs with the genre`, () => {
+    const question = {
+      type: `genre`,
+      genre: `jazz`,
+      answers: [
+        {
+          src: ``,
+          genre: `jazz`,
+        }, {
+          src: ``,
+          genre: `blues`,
+        }, {
+          src: ``,
+          genre: `jazz`,
+        }, {
+          src: ``,
+          genre: `blues`,
+        },
+      ]
+    };
+
+    it(`returns false, when user answer has no songs selected`, () => {
+      const userAnswer = [false, false, false, false];
+      expect(isGenreAnswerCorrect(question, userAnswer)).toEqual(false);
+    });
+
+    it(`returns true, when user answer has correct songs selected`, () => {
+      const userAnswer = [true, false, true, false];
+      expect(isGenreAnswerCorrect(question, userAnswer)).toEqual(true);
+    });
+
+    it(`returns false, when user answer has all correct and some incorrect songs selected`, () => {
+      const userAnswer = [true, false, true, true];
+      expect(isGenreAnswerCorrect(question, userAnswer)).toEqual(false);
+    });
+
+    it(`returns false, when user answer has some correct and some incorrect songs selected`, () => {
+      const userAnswer = [false, false, true, true];
+      expect(isGenreAnswerCorrect(question, userAnswer)).toEqual(false);
+    });
+
+    it(`returns false, when user answer has only incorrect songs selected`, () => {
+      const userAnswer = [false, true, false, true];
+      expect(isGenreAnswerCorrect(question, userAnswer)).toEqual(false);
+    });
+
+    it(`returns false, when user answer has wrong number of songs`, () => {
+      const userAnswer = [true, false, true, false, false];
+      expect(isGenreAnswerCorrect(question, userAnswer)).toEqual(false);
     });
   });
 });
