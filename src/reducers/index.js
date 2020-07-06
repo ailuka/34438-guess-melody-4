@@ -1,18 +1,7 @@
-import {extend} from "./utils.js";
-import questions from "./mocks/questions.js";
-import {GameType} from "./const.js";
-
-const initialState = {
-  maxMistakes: 3,
-  mistakes: 0,
-  questions,
-  step: -1,
-};
-
-const ActionType = {
-  INCREMENT_MISTAKES: `INCREMENT_MISTAKES`,
-  INCREMENT_STEP: `INCREMENT_STEP`,
-};
+import {GameType, ActionType} from "../const.js";
+import {combineReducers} from "redux";
+import {mistakes} from "./mistakes.js";
+import {steps} from "./steps.js";
 
 const isArtistAnswerCorrect = (question, userAnswer) => {
   return userAnswer.artist === question.song.artist;
@@ -53,32 +42,7 @@ const ActionCreator = {
   }),
 };
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ActionType.INCREMENT_MISTAKES:
-      const mistakes = state.mistakes + action.payload;
 
-      if (mistakes >= state.maxMistakes) {
-        return extend({}, initialState);
-      }
-
-      return extend(state, {
-        mistakes,
-      });
-
-    case ActionType.INCREMENT_STEP:
-      let nextStep = state.step + action.payload;
-
-      if (nextStep >= state.questions.length) {
-        return extend({}, initialState);
-      }
-
-      return extend(state, {
-        step: nextStep,
-      });
-  }
-
-  return state;
-};
+const reducer = combineReducers({mistakes, steps});
 
 export {reducer, ActionType, ActionCreator, isGenreAnswerCorrect};
