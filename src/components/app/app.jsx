@@ -8,7 +8,7 @@ import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.
 import {GameType} from "../../const.js";
 import withAudioPlayer from "../../hocs/with-audio-player/with-audio-player.jsx";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducers/index.js";
 
 const GenreQuestionScreenWrapped = withAudioPlayer(GenreQuestionScreen);
 const ArtistQuestionScreenWrapped = withAudioPlayer(ArtistQuestionScreen);
@@ -93,9 +93,9 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  step: state.step,
-  maxMistakes: state.maxMistakes,
-  questions: state.questions,
+  step: state.steps.step,
+  maxMistakes: state.mistakes.maxMistakes,
+  questions: state.steps.questions,
 });
 
 const mapDispatchToProps = (dispatch) => ({
