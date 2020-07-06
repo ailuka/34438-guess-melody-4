@@ -63,7 +63,7 @@ const reducer = (state = initialState, action) => {
       }
 
       return extend(state, {
-        mistakes: state.mistakes + action.payload,
+        mistakes,
       });
 
     case ActionType.INCREMENT_STEP:
