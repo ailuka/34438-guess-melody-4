@@ -46,10 +46,14 @@ const questions = [
 describe(`Render App`, () => {
   it(`Render WelcomeScreen`, () => {
     const store = mockStore({
-      mistakes: 0,
-      maxMistakes: 3,
-      questions,
-      step: -1,
+      mistakes: {
+        count: 0,
+        maxMistakes: 3,
+      },
+      steps: {
+        questions,
+        step: -1,
+      }
     });
 
     const tree = renderer.create(
@@ -67,10 +71,14 @@ describe(`Render App`, () => {
 
   it(`Render GenreQuestionScreen`, () => {
     const store = mockStore({
-      mistakes: 3,
-      maxMistakes: 3,
-      questions,
-      step: 0,
+      mistakes: {
+        count: 3,
+        maxMistakes: 3,
+      },
+      steps: {
+        questions,
+        step: 0,
+      }
     });
 
     const tree = renderer.create(
@@ -89,10 +97,14 @@ describe(`Render App`, () => {
 
   it(`Render ArtistQuestionScreen`, () => {
     const store = mockStore({
-      mistakes: 3,
-      maxMistakes: 3,
-      questions,
-      step: 1,
+      mistakes: {
+        count: 3,
+        maxMistakes: 3,
+      },
+      steps: {
+        questions,
+        step: 1,
+      }
     });
 
     const tree = renderer.create(
