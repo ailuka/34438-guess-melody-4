@@ -1,5 +1,11 @@
 import {extend} from "../utils.js";
-import {ActionType, initialStepsState} from "../const.js";
+import {ActionType} from "../const.js";
+import questions from "../mocks/questions.js";
+
+const initialStepsState = {
+  questions,
+  step: -1,
+};
 
 const steps = (state = initialStepsState, action) => {
   switch (action.type) {
