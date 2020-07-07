@@ -5,7 +5,7 @@ import WelcomeScreen from "../welcome-screen/welcome-screen.jsx";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen.jsx";
 import GameScreen from "../game-screen/game-screen.jsx";
 import GenreQuestionScreen from "../genre-question-screen/genre-question-screen.jsx";
-import {GameType} from "../../const.js";
+import {GameType, MAX_MISTAKES} from "../../const.js";
 import withAudioPlayer from "../../hocs/with-audio-player/with-audio-player.jsx";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducers/index.js";
@@ -15,13 +15,13 @@ const ArtistQuestionScreenWrapped = withAudioPlayer(ArtistQuestionScreen);
 
 class App extends PureComponent {
   _renderGameScreen() {
-    const {maxMistakes, questions, onUserAnswer, onWelcomeButtonClick, step} = this.props;
+    const {questions, onUserAnswer, onWelcomeButtonClick, step} = this.props;
     const question = questions[step];
 
     if (step === -1 || step >= questions.length) {
       return (
         <WelcomeScreen
-          errorsCount={maxMistakes}
+          errorsCount={MAX_MISTAKES}
           onWelcomeButtonClick={onWelcomeButtonClick}
         />
       );
@@ -85,7 +85,6 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  maxMistakes: PropTypes.number.isRequired,
   questions: PropTypes.array.isRequired,
   onUserAnswer: PropTypes.func.isRequired,
   onWelcomeButtonClick: PropTypes.func.isRequired,
@@ -94,7 +93,6 @@ App.propTypes = {
 
 const mapStateToProps = (state) => ({
   step: state.steps.step,
-  maxMistakes: state.mistakes.maxMistakes,
   questions: state.steps.questions,
 });
 

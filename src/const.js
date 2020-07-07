@@ -3,12 +3,9 @@ export const GameType = {
   GENRE: `genre`,
 };
 
-export const initialMistakesState = {
-  maxMistakes: 3,
-  count: 0,
-};
-
 export const ActionType = {
   INCREMENT_MISTAKES: `INCREMENT_MISTAKES`,
   INCREMENT_STEP: `INCREMENT_STEP`,
 };
+
+export const MAX_MISTAKES = 3;

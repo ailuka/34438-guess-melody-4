@@ -41,7 +41,7 @@ GameScreen.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  mistakes: state.mistakes.count,
+  mistakes: state.mistakes,
 });
 
 export {GameScreen};
