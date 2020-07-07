@@ -46,10 +46,7 @@ const questions = [
 describe(`Render App`, () => {
   it(`Render WelcomeScreen`, () => {
     const store = mockStore({
-      mistakes: {
-        count: 0,
-        maxMistakes: 3,
-      },
+      mistakes: 0,
       steps: {
         questions,
         step: -1,
@@ -71,10 +68,7 @@ describe(`Render App`, () => {
 
   it(`Render GenreQuestionScreen`, () => {
     const store = mockStore({
-      mistakes: {
-        count: 3,
-        maxMistakes: 3,
-      },
+      mistakes: 3,
       steps: {
         questions,
         step: 0,
@@ -97,10 +91,7 @@ describe(`Render App`, () => {
 
   it(`Render ArtistQuestionScreen`, () => {
     const store = mockStore({
-      mistakes: {
-        count: 3,
-        maxMistakes: 3,
-      },
+      mistakes: 3,
       steps: {
         questions,
         step: 1,
