@@ -28,6 +28,8 @@ describe(`src/genre-question-screen.jsx`, () => {
             question={question}
             onAnswer={() => null}
             renderPlayer={() => null}
+            onChange={() => null}
+            userAnswers={[false, false, false, false]}
           />, {
             createNodeMock: () => {
               return {};

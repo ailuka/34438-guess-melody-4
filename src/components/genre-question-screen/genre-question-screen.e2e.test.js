@@ -1,5 +1,5 @@
 import React from "react";
-import Enzyme, {shallow} from "enzyme";
+import Enzyme, {shallow, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import GenreQuestionScreen from "./genre-question-screen.jsx";
 
@@ -42,6 +42,8 @@ describe(`GenreQuestionScreen`, () => {
           question={question}
           onAnswer={onAnswer}
           renderPlayer={() => null}
+          onChange={() => null}
+          userAnswers={[false, false, false, false]}
         />
     );
 
@@ -60,11 +62,13 @@ describe(`GenreQuestionScreen`, () => {
     const onAnswer = jest.fn((...args) => [...args]);
     const userAnswer = [false, true, false, false];
 
-    const genreQuestionScreen = shallow(
+    const genreQuestionScreen = mount(
         <GenreQuestionScreen
           question={question}
           onAnswer={onAnswer}
           renderPlayer={() => null}
+          onChange={() => null}
+          userAnswers={userAnswer}
         />
     );
 
@@ -75,8 +79,7 @@ describe(`GenreQuestionScreen`, () => {
     form.simulate(`submit`, {preventDefault() {}});
 
     expect(onAnswer).toHaveBeenCalledTimes(1);
-    expect(onAnswer.mock.calls[0][0]).toMatchObject(question);
-    expect(onAnswer.mock.calls[0][1]).toMatchObject(userAnswer);
+    expect(onAnswer.mock.calls[0][0]).toEqual(undefined);
 
     expect(
         genreQuestionScreen.find(`input`).map((it) => {
