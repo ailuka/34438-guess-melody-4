@@ -9,8 +9,9 @@ import {GameType, MAX_MISTAKES} from "../../const.js";
 import withActivePlayer from "../../hocs/with-active-player/with-active-player.js";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducers/index.js";
+import withUserAnswer from "../../hocs/with-user-answer/with-user-answer.js";
 
-const GenreQuestionScreenWrapped = withActivePlayer(GenreQuestionScreen);
+const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
 
 class App extends PureComponent {
