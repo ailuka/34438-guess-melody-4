@@ -37,7 +37,7 @@ class App extends PureComponent {
             >
               <ArtistQuestionScreenWrapped
                 question={question}
-                onAnswerClick={onUserAnswer}
+                onAnswer={onUserAnswer}
               />
             </GameScreen>
           );
@@ -48,7 +48,7 @@ class App extends PureComponent {
             >
               <GenreQuestionScreenWrapped
                 question={question}
-                onAnswerClick={onUserAnswer}
+                onAnswer={onUserAnswer}
               />
             </GameScreen>
           );
@@ -70,13 +70,13 @@ class App extends PureComponent {
           <Route exact path="/dev-artist">
             <ArtistQuestionScreenWrapped
               question={questions[1]}
-              onAnswerClick={() => null}
+              onAnswer={() => null}
             />
           </Route>
           <Route exact path="/dev-genre">
             <GenreQuestionScreenWrapped
               question={questions[0]}
-              onAnswerClick={() => null}
+              onAnswer={() => null}
             />
           </Route>
         </Switch>

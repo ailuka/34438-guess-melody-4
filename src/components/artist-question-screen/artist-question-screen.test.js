@@ -26,7 +26,7 @@ describe(`src/artist-question-screen.jsx`, () => {
       const tree = renderer.create(
           <ArtistQuestionScreen
             question={question}
-            onAnswerClick={() => null}
+            onAnswer={() => null}
             renderPlayer={() => null}
           />, {
             createNodeMock: () => {

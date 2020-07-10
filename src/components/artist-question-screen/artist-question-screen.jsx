@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const ArtistQuestionScreen = (props) => {
-  const {question, onAnswerClick, renderPlayer} = props;
+  const {question, onAnswer, renderPlayer} = props;
   const {song, answers} = question;
 
   return (
@@ -21,7 +21,7 @@ const ArtistQuestionScreen = (props) => {
               <input className="artist__input visually-hidden" type="radio" name="answer" value={`artist-${i}`} id={`answer-${i}`}
                 onChange={(evt) => {
                   evt.preventDefault();
-                  onAnswerClick(question, answer);
+                  onAnswer(question, answer);
                 }}
               />
               <label className="artist__name" htmlFor={`answer-${i}`}>
@@ -50,7 +50,7 @@ ArtistQuestionScreen.propTypes = {
         })
     ).isRequired,
   }).isRequired,
-  onAnswerClick: PropTypes.func.isRequired,
+  onAnswer: PropTypes.func.isRequired,
   renderPlayer: PropTypes.func.isRequired,
 };
 
