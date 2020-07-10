@@ -40,6 +40,11 @@ const ActionCreator = {
     type: ActionType.INCREMENT_STEP,
     payload: 1,
   }),
+
+  resetGame: () => ({
+    type: ActionType.RESET_GAME,
+    payload: null,
+  }),
 };
 
 
