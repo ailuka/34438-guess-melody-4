@@ -117,6 +117,13 @@ describe(`Action creators work correctly`, () => {
       payload: 1,
     });
   });
+
+  it(`ActionCreator.resetGame returns payload: 0`, () => {
+    expect(ActionCreator.resetGame()).toEqual({
+      type: ActionType.RESET_GAME,
+      payload: null,
+    });
+  });
 });
 
 describe(`isGenreAnswerCorrect`, () => {

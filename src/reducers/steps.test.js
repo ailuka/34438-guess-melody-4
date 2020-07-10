@@ -33,3 +33,38 @@ it(`Reducer should increment current step by a given value`, () => {
   });
 });
 
+it(`Reducer should return default`, () => {
+  expect(steps({
+    step: 5,
+    questions,
+  }, {
+    type: ActionType.RESET_GAME,
+    payload: null,
+  })).toEqual({
+    step: 0,
+    questions,
+  });
+
+  expect(steps({
+    step: 0,
+    questions,
+  }, {
+    type: ActionType.RESET_GAME,
+    payload: null,
+  })).toEqual({
+    step: 0,
+    questions,
+  });
+
+  expect(steps({
+    step: -1,
+    questions,
+  }, {
+    type: ActionType.RESET_GAME,
+    payload: null,
+  })).toEqual({
+    step: 0,
+    questions,
+  });
+});
+
