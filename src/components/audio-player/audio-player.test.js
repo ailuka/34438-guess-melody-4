@@ -16,9 +16,12 @@ describe(`src/audio-player.jsx`, () => {
       const tree = renderer.create(
           <AudioPlayer
             isPlaying={false}
+            isLoading={true}
             src={song.src}
             onPlayButtonClick={() => null}
-          />, {
+          >
+            <audio/>
+          </AudioPlayer>, {
             createNodeMock: () => {
               return {};
             },
@@ -37,9 +40,12 @@ describe(`src/audio-player.jsx`, () => {
       const tree = renderer.create(
           <AudioPlayer
             isPlaying={true}
+            isLoading={false}
             src={song.src}
             onPlayButtonClick={() => null}
-          />, {
+          >
+            <audio/>
+          </AudioPlayer>, {
             createNodeMock: () => {
               return {};
             },
