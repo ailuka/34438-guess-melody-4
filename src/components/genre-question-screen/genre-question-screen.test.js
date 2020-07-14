@@ -26,8 +26,10 @@ describe(`src/genre-question-screen.jsx`, () => {
       const tree = renderer.create(
           <GenreQuestionScreen
             question={question}
-            onAnswerClick={() => null}
+            onAnswer={() => null}
             renderPlayer={() => null}
+            onChange={() => null}
+            userAnswers={[false, false, false, false]}
           />, {
             createNodeMock: () => {
               return {};

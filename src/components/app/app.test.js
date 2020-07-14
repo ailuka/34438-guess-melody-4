@@ -68,7 +68,7 @@ describe(`Render App`, () => {
 
   it(`Render GenreQuestionScreen`, () => {
     const store = mockStore({
-      mistakes: 3,
+      mistakes: 1,
       steps: {
         questions,
         step: 0,
@@ -91,10 +91,56 @@ describe(`Render App`, () => {
 
   it(`Render ArtistQuestionScreen`, () => {
     const store = mockStore({
+      mistakes: 2,
+      steps: {
+        questions,
+        step: 1,
+      }
+    });
+
+    const tree = renderer.create(
+        <Provider store={store}>
+          <App/>
+        </Provider>,
+        {
+          createNodeMock: () => {
+            return {};
+          }
+        })
+        .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Render FailureScreen`, () => {
+    const store = mockStore({
       mistakes: 3,
       steps: {
         questions,
         step: 1,
+      }
+    });
+
+    const tree = renderer.create(
+        <Provider store={store}>
+          <App/>
+        </Provider>,
+        {
+          createNodeMock: () => {
+            return {};
+          }
+        })
+        .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Render WinScreen`, () => {
+    const store = mockStore({
+      mistakes: 0,
+      steps: {
+        questions,
+        step: 3,
       }
     });
 

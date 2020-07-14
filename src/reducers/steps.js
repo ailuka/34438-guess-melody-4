@@ -10,14 +10,13 @@ const initialStepsState = {
 const steps = (state = initialStepsState, action) => {
   switch (action.type) {
     case ActionType.INCREMENT_STEP:
-      let nextStep = state.step + action.payload;
-
-      if (nextStep >= state.questions.length) {
-        return extend({}, initialStepsState);
-      }
-
       return extend(state, {
-        step: nextStep,
+        step: state.step + action.payload,
+      });
+
+    case ActionType.RESET_GAME:
+      return extend(initialStepsState, {
+        step: 0,
       });
   }
 

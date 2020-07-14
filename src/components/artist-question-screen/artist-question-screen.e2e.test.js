@@ -38,7 +38,7 @@ const mockEvent = {
 describe(`ArtistQuestionScreen`, () => {
   it(`Click on user answer should pass to the callback data-object from which this answer was created`, () => {
     const {question} = mock;
-    const onAnswerClick = jest.fn();
+    const onAnswer = jest.fn();
     const userAnswer = {
       artist: `one`,
       picture: `pic-one`,
@@ -47,7 +47,7 @@ describe(`ArtistQuestionScreen`, () => {
     const artistQuestionScreen = shallow(
         <ArtistQuestionScreen
           question={question}
-          onAnswerClick={onAnswerClick}
+          onAnswer={onAnswer}
           renderPlayer={() => null}
         />
     );
@@ -56,8 +56,8 @@ describe(`ArtistQuestionScreen`, () => {
     const answerOne = answerInputs.at(0);
     answerOne.simulate(`change`, mockEvent);
 
-    expect(onAnswerClick).toHaveBeenCalledTimes(1);
-    expect(onAnswerClick.mock.calls[0][0]).toMatchObject(question);
-    expect(onAnswerClick.mock.calls[0][1]).toMatchObject(userAnswer);
+    expect(onAnswer).toHaveBeenCalledTimes(1);
+    expect(onAnswer.mock.calls[0][0]).toMatchObject(question);
+    expect(onAnswer.mock.calls[0][1]).toMatchObject(userAnswer);
   });
 });
