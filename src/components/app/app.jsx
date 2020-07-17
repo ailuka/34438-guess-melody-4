@@ -12,6 +12,7 @@ import {ActionCreator} from "../../reducers/index.js";
 import withUserAnswer from "../../hocs/with-user-answer/with-user-answer.js";
 import FailureScreen from "../failure-screen/failure-screen.jsx";
 import WinScreen from "../win-screen/win-screen.jsx";
+import {getQuestions, getSteps, getMistakes} from "../../reducers/selectors.js";
 
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
@@ -115,9 +116,9 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  step: state.steps.step,
-  questions: state.steps.questions,
-  mistakes: state.mistakes,
+  step: getSteps(state),
+  questions: getQuestions(state),
+  mistakes: getMistakes(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

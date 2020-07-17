@@ -1,9 +1,8 @@
 import {extend} from "../utils.js";
 import {ActionType} from "../const.js";
-import questions from "../mocks/questions.js";
 
 const initialStepsState = {
-  questions,
+  questions: [],
   step: -1,
 };
 
@@ -17,6 +16,11 @@ const steps = (state = initialStepsState, action) => {
     case ActionType.RESET_GAME:
       return extend(initialStepsState, {
         step: 0,
+      });
+
+    case ActionType.LOAD_QUESTIONS:
+      return extend(state, {
+        questions: action.payload,
       });
   }
 

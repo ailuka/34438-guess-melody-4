@@ -17,6 +17,15 @@ const isGenreAnswerCorrect = (question, userAnswer) => {
   });
 };
 
+const Operation = {
+  loadQuestions: () => (dispatch, getState, api) => {
+    return api.get(`/questions`)
+      .then((response) => {
+        dispatch(ActionCreator.loadQuestions(response.data));
+      });
+  }
+};
+
 const ActionCreator = {
   incrementMistake: (question, userAnswer) => {
     let answerIsCorrect = false;
@@ -45,9 +54,16 @@ const ActionCreator = {
     type: ActionType.RESET_GAME,
     payload: null,
   }),
+
+  loadQuestions: (questions) => {
+    return {
+      type: ActionType.LOAD_QUESTIONS,
+      payload: questions,
+    };
+  },
 };
 
 
 const reducer = combineReducers({mistakes, steps});
 
-export {reducer, ActionType, ActionCreator, isGenreAnswerCorrect};
+export {reducer, ActionType, ActionCreator, isGenreAnswerCorrect, Operation};
