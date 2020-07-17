@@ -4,9 +4,9 @@ import App from "./components/app/app.jsx";
 import {Provider} from "react-redux";
 import {createStore, applyMiddleware, compose} from "redux";
 import thunk from "redux-thunk";
-import {reducer} from "./reducers/index.js";
+import reducer from "./reducer/reducer.js";
 import {createAPI} from "./api.js";
-import {Operation as DataOperation} from "./reducers/index.js";
+import {Operation as DataOperation} from "./reducer/data/data.js";
 
 const api = createAPI(() => {});
 
