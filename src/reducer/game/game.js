@@ -1,7 +1,16 @@
-import {GameType, ActionType} from "../const.js";
-import {combineReducers} from "redux";
-import {mistakes} from "./mistakes.js";
-import {steps} from "./steps.js";
+import {extend} from "../../utils.js";
+import {GameType} from "../../const.js";
+
+const initialState = {
+  mistakes: 0,
+  step: -1,
+};
+
+const ActionType = {
+  INCREMENT_MISTAKES: `INCREMENT_MISTAKES`,
+  INCREMENT_STEP: `INCREMENT_STEP`,
+  RESET_GAME: `RESET_GAME`,
+};
 
 const isArtistAnswerCorrect = (question, userAnswer) => {
   return userAnswer.artist === question.song.artist;
@@ -15,15 +24,6 @@ const isGenreAnswerCorrect = (question, userAnswer) => {
   return question.answers.every((answer, i) => {
     return (answer.genre === question.genre) === userAnswer[i];
   });
-};
-
-const Operation = {
-  loadQuestions: () => (dispatch, getState, api) => {
-    return api.get(`/questions`)
-      .then((response) => {
-        dispatch(ActionCreator.loadQuestions(response.data));
-      });
-  }
 };
 
 const ActionCreator = {
@@ -54,16 +54,27 @@ const ActionCreator = {
     type: ActionType.RESET_GAME,
     payload: null,
   }),
-
-  loadQuestions: (questions) => {
-    return {
-      type: ActionType.LOAD_QUESTIONS,
-      payload: questions,
-    };
-  },
 };
 
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ActionType.INCREMENT_MISTAKES:
+      return extend(state, {
+        mistakes: state.mistakes + action.payload,
+      });
 
-const reducer = combineReducers({mistakes, steps});
+    case ActionType.INCREMENT_STEP:
+      return extend(state, {
+        step: state.step + action.payload,
+      });
 
-export {reducer, ActionType, ActionCreator, isGenreAnswerCorrect, Operation};
+    case ActionType.RESET_GAME:
+      return extend(initialState, {
+        step: 0,
+      });
+  }
+
+  return state;
+};
+
+export {reducer, ActionType, ActionCreator};
