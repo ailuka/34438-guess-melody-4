@@ -44,7 +44,7 @@ class App extends PureComponent {
       );
     }
 
-    if (step >= questions.length || step === 1) {
+    if (step >= questions.length) {
       if (authorizationStatus === AuthorizationStatus.AUTH) {
         return (
           <WinScreen
