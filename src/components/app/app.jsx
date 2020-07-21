@@ -17,13 +17,14 @@ import {getStep, getMistakes} from "../../reducer/game/selectors.js";
 import AuthorizationScreen from "../autrorization-screen/authorization-screen.jsx";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
+import {Operation as UserOperation} from "../../reducer/user/user.js";
 
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
 
 class App extends PureComponent {
   _renderGameScreen() {
-    const {authorizationStatus, questions, onUserAnswer, onWelcomeButtonClick, step, mistakes, onReset} = this.props;
+    const {authorizationStatus, logIn, questions, onUserAnswer, onWelcomeButtonClick, step, mistakes, onReset} = this.props;
     const question = questions[step];
 
     if (step === -1) {
@@ -55,7 +56,7 @@ class App extends PureComponent {
       } else if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
         return (
           <AuthorizationScreen
-            onSubmit={() => null}
+            onSubmit={logIn}
             onReplayButtonClick={onReset}
           />
         );
@@ -128,6 +129,7 @@ class App extends PureComponent {
 
 App.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
+  logIn: PropTypes.func.isRequired,
   questions: PropTypes.array.isRequired,
   onUserAnswer: PropTypes.func.isRequired,
   onWelcomeButtonClick: PropTypes.func.isRequired,
@@ -153,6 +155,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onReset() {
     dispatch(ActionCreator.resetGame());
+  },
+  logIn(authData) {
+    dispatch(UserOperation.logIn(authData));
   }
 });
 
