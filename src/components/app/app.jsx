@@ -15,13 +15,15 @@ import WinScreen from "../win-screen/win-screen.jsx";
 import {getQuestions} from "../../reducer/data/selectors.js";
 import {getStep, getMistakes} from "../../reducer/game/selectors.js";
 import AuthorizationScreen from "../autrorization-screen/authorization-screen.jsx";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
 
 class App extends PureComponent {
   _renderGameScreen() {
-    const {questions, onUserAnswer, onWelcomeButtonClick, step, mistakes, onReset} = this.props;
+    const {authorizationStatus, questions, onUserAnswer, onWelcomeButtonClick, step, mistakes, onReset} = this.props;
     const question = questions[step];
 
     if (step === -1) {
@@ -41,14 +43,24 @@ class App extends PureComponent {
       );
     }
 
-    if (step >= questions.length) {
-      return (
-        <WinScreen
-          questionsCount={questions.length}
-          mistakesCount={mistakes}
-          onReplayButtonClick={onReset}
-        />
-      );
+    if (step >= questions.length || step === 1) {
+      if (authorizationStatus === AuthorizationStatus.AUTH) {
+        return (
+          <WinScreen
+            questionsCount={questions.length}
+            mistakesCount={mistakes}
+            onReplayButtonClick={onReset}
+          />
+        );
+      } else if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+        return (
+          <AuthorizationScreen
+            onSubmit={() => null}
+            onReplayButtonClick={onReset}
+          />
+        );
+      }
+
     }
 
     if (question) {
@@ -115,6 +127,7 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
+  authorizationStatus: PropTypes.string.isRequired,
   questions: PropTypes.array.isRequired,
   onUserAnswer: PropTypes.func.isRequired,
   onWelcomeButtonClick: PropTypes.func.isRequired,
@@ -124,6 +137,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
   step: getStep(state),
   questions: getQuestions(state),
   mistakes: getMistakes(state),
