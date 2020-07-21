@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import App from "./app.jsx";
+import {NameSpace} from "../../reducer/name-space.js";
 
 const mockStore = configureStore([]);
 
@@ -46,9 +47,9 @@ const questions = [
 describe(`Render App`, () => {
   it(`Render WelcomeScreen`, () => {
     const store = mockStore({
-      mistakes: 0,
-      steps: {
-        questions,
+      [NameSpace.DATA]: {questions},
+      [NameSpace.GAME]: {
+        mistakes: 0,
         step: -1,
       }
     });
@@ -68,9 +69,9 @@ describe(`Render App`, () => {
 
   it(`Render GenreQuestionScreen`, () => {
     const store = mockStore({
-      mistakes: 1,
-      steps: {
-        questions,
+      [NameSpace.DATA]: {questions},
+      [NameSpace.GAME]: {
+        mistakes: 1,
         step: 0,
       }
     });
@@ -91,9 +92,9 @@ describe(`Render App`, () => {
 
   it(`Render ArtistQuestionScreen`, () => {
     const store = mockStore({
-      mistakes: 2,
-      steps: {
-        questions,
+      [NameSpace.DATA]: {questions},
+      [NameSpace.GAME]: {
+        mistakes: 2,
         step: 1,
       }
     });
@@ -114,9 +115,9 @@ describe(`Render App`, () => {
 
   it(`Render FailureScreen`, () => {
     const store = mockStore({
-      mistakes: 3,
-      steps: {
-        questions,
+      [NameSpace.DATA]: {questions},
+      [NameSpace.GAME]: {
+        mistakes: 3,
         step: 1,
       }
     });
@@ -137,9 +138,9 @@ describe(`Render App`, () => {
 
   it(`Render WinScreen`, () => {
     const store = mockStore({
-      mistakes: 0,
-      steps: {
-        questions,
+      [NameSpace.DATA]: {questions},
+      [NameSpace.GAME]: {
+        mistakes: 0,
         step: 3,
       }
     });
