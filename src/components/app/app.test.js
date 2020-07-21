@@ -4,6 +4,7 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import App from "./app.jsx";
 import {NameSpace} from "../../reducer/name-space.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 const mockStore = configureStore([]);
 
@@ -51,6 +52,9 @@ describe(`Render App`, () => {
       [NameSpace.GAME]: {
         mistakes: 0,
         step: -1,
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.NO_AUTH,
       }
     });
 
@@ -73,6 +77,9 @@ describe(`Render App`, () => {
       [NameSpace.GAME]: {
         mistakes: 1,
         step: 0,
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.NO_AUTH,
       }
     });
 
@@ -96,6 +103,9 @@ describe(`Render App`, () => {
       [NameSpace.GAME]: {
         mistakes: 2,
         step: 1,
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.NO_AUTH,
       }
     });
 
@@ -119,6 +129,9 @@ describe(`Render App`, () => {
       [NameSpace.GAME]: {
         mistakes: 3,
         step: 1,
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.NO_AUTH,
       }
     });
 
@@ -142,6 +155,35 @@ describe(`Render App`, () => {
       [NameSpace.GAME]: {
         mistakes: 0,
         step: 3,
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.AUTH,
+      }
+    });
+
+    const tree = renderer.create(
+        <Provider store={store}>
+          <App/>
+        </Provider>,
+        {
+          createNodeMock: () => {
+            return {};
+          }
+        })
+        .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Render AuthorizationScreen`, () => {
+    const store = mockStore({
+      [NameSpace.DATA]: {questions},
+      [NameSpace.GAME]: {
+        mistakes: 0,
+        step: 3,
+      },
+      [NameSpace.USER]: {
+        authorizationStatus: AuthorizationStatus.NO_AUTH,
       }
     });
 
