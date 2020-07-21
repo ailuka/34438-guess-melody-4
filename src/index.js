@@ -7,6 +7,7 @@ import thunk from "redux-thunk";
 import reducer from "./reducer/reducer.js";
 import {createAPI} from "./api.js";
 import {Operation as DataOperation} from "./reducer/data/data.js";
+import {Operation as UserOperation} from "./reducer/user/user.js";
 
 const api = createAPI(() => {});
 
@@ -19,6 +20,7 @@ const store = createStore(
 );
 
 store.dispatch(DataOperation.loadQuestions());
+store.dispatch(UserOperation.checkAuth());
 
 ReactDOM.render(
     <Provider store={store}>
