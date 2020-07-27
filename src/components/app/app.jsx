@@ -20,6 +20,7 @@ import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 import history from "../../history.js";
 import {AppRoute} from "../../const.js";
+import PrivateRoute from "../private-route/private-route.jsx";
 
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
@@ -102,13 +103,19 @@ class App extends PureComponent {
               onReplayButtonClick={onReset}
             />
           </Route>
-          <Route exact path={AppRoute.RESULT}>
-            <WinScreen
-              questionsCount={questions.length}
-              mistakesCount={mistakes}
-              onReplayButtonClick={onReset}
-            />
-          </Route>
+          <PrivateRoute
+            exact
+            path={AppRoute.RESULT}
+            render={() => {
+              return (
+                <WinScreen
+                  questionsCount={questions.length}
+                  mistakesCount={mistakes}
+                  onReplayButtonClick={onReset}
+                />
+              );
+            }}
+          />
         </Switch>
       </Router>
     );
