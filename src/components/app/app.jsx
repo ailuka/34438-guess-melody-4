@@ -19,6 +19,7 @@ import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 import history from "../../history.js";
+import {AppRoute} from "../../const.js";
 
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
@@ -96,30 +97,30 @@ class App extends PureComponent {
   }
 
   render() {
-    const {questions} = this.props;
+    const {questions, mistakes, onReset, logIn} = this.props;
 
     return (
       <Router history={history}>
         <Switch>
-          <Route exact path="/">
+          <Route exact path={AppRoute.ROOT}>
             {this._renderGameScreen()}
           </Route>
-          <Route exact path="/dev-artist">
-            <ArtistQuestionScreenWrapped
-              question={questions[1]}
-              onAnswer={() => null}
-            />
-          </Route>
-          <Route exact path="/dev-genre">
-            <GenreQuestionScreenWrapped
-              question={questions[0]}
-              onAnswer={() => null}
-            />
-          </Route>
-          <Route exact path="/dev-auth">
+          <Route exact path={AppRoute.LOGIN}>
             <AuthorizationScreen
-              onSubmit={() => null}
-              onReplayButtonClick={() => null}
+              onSubmit={logIn}
+              onReplayButtonClick={onReset}
+            />
+          </Route>
+          <Route exact path={AppRoute.LOSE}>
+            <FailureScreen
+              onReplayButtonClick={onReset}
+            />
+          </Route>
+          <Route exact path={AppRoute.RESULT}>
+            <WinScreen
+              questionsCount={questions.length}
+              mistakesCount={mistakes}
+              onReplayButtonClick={onReset}
             />
           </Route>
         </Switch>
