@@ -1,16 +1,20 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import WinScreen from "./win-screen.jsx";
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 
 describe(`WinScreen`, () => {
   describe(`should render correctly with 3 questions`, () => {
     it(`with 0 mistakes`, () => {
       const winScreen = renderer.create(
-          <WinScreen
-            questionsCount={3}
-            mistakesCount={0}
-            onReplayButtonClick={() => null}
-          />
+          <Router history={history}>
+            <WinScreen
+              questionsCount={3}
+              mistakesCount={0}
+              onReplayButtonClick={() => null}
+            />
+          </Router>
       ).toJSON();
 
       expect(winScreen).toMatchSnapshot();
@@ -18,11 +22,13 @@ describe(`WinScreen`, () => {
 
     it(`with 2 mistakes`, () => {
       const winScreen = renderer.create(
-          <WinScreen
-            questionsCount={3}
-            mistakesCount={2}
-            onReplayButtonClick={() => null}
-          />
+          <Router history={history}>
+            <WinScreen
+              questionsCount={3}
+              mistakesCount={2}
+              onReplayButtonClick={() => null}
+            />
+          </Router>
       ).toJSON();
 
       expect(winScreen).toMatchSnapshot();
@@ -32,11 +38,13 @@ describe(`WinScreen`, () => {
   describe(`should render correctly with 2 questions`, () => {
     it(`with 0 mistakes`, () => {
       const winScreen = renderer.create(
-          <WinScreen
-            questionsCount={2}
-            mistakesCount={0}
-            onReplayButtonClick={() => null}
-          />
+          <Router history={history}>
+            <WinScreen
+              questionsCount={2}
+              mistakesCount={0}
+              onReplayButtonClick={() => null}
+            />
+          </Router>
       ).toJSON();
 
       expect(winScreen).toMatchSnapshot();
@@ -44,11 +52,13 @@ describe(`WinScreen`, () => {
 
     it(`with 1 mistake`, () => {
       const winScreen = renderer.create(
-          <WinScreen
-            questionsCount={2}
-            mistakesCount={1}
-            onReplayButtonClick={() => null}
-          />
+          <Router history={history}>
+            <WinScreen
+              questionsCount={2}
+              mistakesCount={1}
+              onReplayButtonClick={() => null}
+            />
+          </Router>
       ).toJSON();
 
       expect(winScreen).toMatchSnapshot();

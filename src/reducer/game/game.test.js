@@ -124,6 +124,13 @@ describe(`Action creators work correctly`, () => {
       payload: null,
     });
   });
+
+  it(`ActionCreator.goToWelcome returns payload: null`, () => {
+    expect(ActionCreator.goToWelcome()).toEqual({
+      type: ActionType.GO_TO_WELCOME,
+      payload: null,
+    });
+  });
 });
 
 describe(`isGenreAnswerCorrect`, () => {
@@ -273,4 +280,40 @@ describe(`Reducer works correctly`, () => {
       mistakes: 0,
     });
   });
+
+  it(`Reducer should return step -1`, () => {
+    expect(reducer({
+      step: 5,
+      mistakes: 1,
+    }, {
+      type: ActionType.GO_TO_WELCOME,
+      payload: null,
+    })).toEqual({
+      step: -1,
+      mistakes: 0,
+    });
+
+    expect(reducer({
+      step: 0,
+      mistakes: 0,
+    }, {
+      type: ActionType.GO_TO_WELCOME,
+      payload: null,
+    })).toEqual({
+      step: -1,
+      mistakes: 0,
+    });
+
+    expect(reducer({
+      step: -1,
+      mistakes: 0,
+    }, {
+      type: ActionType.GO_TO_WELCOME,
+      payload: null,
+    })).toEqual({
+      step: -1,
+      mistakes: 0,
+    });
+  });
+
 });
