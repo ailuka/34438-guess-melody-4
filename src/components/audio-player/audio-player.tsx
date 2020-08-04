@@ -4,9 +4,9 @@ interface Props {
   isLoading: boolean;
   isPlaying: boolean;
   onPlayButtonClick: () => void;
-};
+}
 
-class AudioPlayer extends React.PureComponent<Props, {}> {
+class AudioPlayer extends React.PureComponent<Props, unknown> {
   render() {
     const {isLoading, isPlaying, onPlayButtonClick, children} = this.props;
 

@@ -12,7 +12,7 @@ interface Props {
   children: React.ReactNode;
   mistakes: number;
   goToWelcome: () => void;
-};
+}
 
 const GameScreen: React.FunctionComponent<Props> = (props: Props) => {
   const {type, children, mistakes, goToWelcome} = props;

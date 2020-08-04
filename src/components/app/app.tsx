@@ -38,7 +38,7 @@ interface Props {
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
 
-class App extends React.PureComponent<Props, {}> {
+class App extends React.PureComponent<Props, unknown> {
   _renderGameScreen() {
     const {authorizationStatus, questions, onUserAnswer, step, mistakes, onWelcomeButtonClick} = this.props;
     const question = questions[step];
