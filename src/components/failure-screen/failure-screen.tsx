@@ -1,9 +1,12 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../const";
 
-const FailureScreen = (props) => {
+interface Props {
+  onReplayButtonClick: () => void;
+}
+
+const FailureScreen: React.FunctionComponent<Props> = (props: Props) => {
   const {onReplayButtonClick} = props;
 
   return (
@@ -22,10 +25,6 @@ const FailureScreen = (props) => {
       </Link>
     </section>
   );
-};
-
-FailureScreen.propTypes = {
-  onReplayButtonClick: PropTypes.func.isRequired,
 };
 
 export default FailureScreen;
