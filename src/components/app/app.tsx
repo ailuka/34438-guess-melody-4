@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import * as React from "react";
 import {Switch, Route, Router} from "react-router-dom";
 import WelcomeScreen from "../welcome-screen/welcome-screen";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen";
