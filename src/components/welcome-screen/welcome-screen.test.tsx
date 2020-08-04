@@ -1,6 +1,6 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import WelcomeScreen from "./welcome-screen.jsx";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import WelcomeScreen from "./welcome-screen";
 
 describe(`Render WelcomeScreen`, () => {
   it(`Welcome screen rendered correctly`, () => {

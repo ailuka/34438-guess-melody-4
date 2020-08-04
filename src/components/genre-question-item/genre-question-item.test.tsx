@@ -1,6 +1,6 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import GenreQuestionItem from "./genre-question-item.jsx";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import GenreQuestionItem from "./genre-question-item";
 
 const answer = {
   src: `https://upload.wikimedia.org/wikipedia/commons/3/38/Stalker-Last_Laugh.ogg`,

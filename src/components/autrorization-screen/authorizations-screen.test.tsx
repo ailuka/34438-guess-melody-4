@@ -1,6 +1,6 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import AuthorizationScreen from "./authorization-screen.jsx";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import AuthorizationScreen from "./authorization-screen";
 
 describe(`AuthorizationScreen`, () => {
   it(`should render correctly`, () => {

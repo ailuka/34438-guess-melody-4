@@ -1,7 +1,7 @@
-import React from "react";
-import renderer from "react-test-renderer";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
 import PropTypes from "prop-types";
-import withAudio from "./with-audio.js";
+import withAudio from "./with-audio";
 
 const MockComponent = (props) => {
   const {children} = props;

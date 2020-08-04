@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import withAudio from "./with-audio.js";
+import withAudio from "./with-audio";
 
 Enzyme.configure({
   adapter: new Adapter(),

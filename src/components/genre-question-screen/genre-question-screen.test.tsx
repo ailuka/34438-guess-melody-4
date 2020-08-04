@@ -1,6 +1,6 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import GenreQuestionScreen from "./genre-question-screen.jsx";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import GenreQuestionScreen from "./genre-question-screen";
 
 const question = {
   type: `genre`,

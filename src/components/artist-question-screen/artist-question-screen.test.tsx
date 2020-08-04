@@ -1,6 +1,6 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import ArtistQuestionScreen from "./artist-question-screen.jsx";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import ArtistQuestionScreen from "./artist-question-screen";
 
 const question = {
   type: `artist`,

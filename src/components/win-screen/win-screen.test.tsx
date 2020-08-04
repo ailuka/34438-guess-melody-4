@@ -1,8 +1,8 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import WinScreen from "./win-screen.jsx";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import WinScreen from "./win-screen";
 import {Router} from "react-router-dom";
-import history from "../../history.js";
+import history from "../../history";
 
 describe(`WinScreen`, () => {
   describe(`should render correctly with 3 questions`, () => {
