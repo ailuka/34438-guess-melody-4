@@ -1,9 +1,10 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
 import ArtistQuestionScreen from "./artist-question-screen";
+import {GameType, QuestionArtist} from "../../types";
 
-const question = {
-  type: `artist`,
+const question: QuestionArtist = {
+  type: GameType.ARTIST,
   song: {
     artist: `Lorde`,
     src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,

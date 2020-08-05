@@ -51,6 +51,9 @@ exports[`Render App Render ArtistQuestionScreen 1`] = `
       <div
         className="wrong"
       />
+      <div
+        className="wrong"
+      />
     </div>
   </header>
   <section
@@ -99,11 +102,11 @@ exports[`Render App Render ArtistQuestionScreen 1`] = `
           htmlFor="answer-0"
         >
           <img
-            alt="Пелагея"
+            alt="John Snow"
             className="artist__picture"
             src="https://api.adorable.io/avatars/128/1"
           />
-          Пелагея
+          John Snow
         </label>
       </div>
       <div
@@ -122,11 +125,11 @@ exports[`Render App Render ArtistQuestionScreen 1`] = `
           htmlFor="answer-1"
         >
           <img
-            alt="Краснознаменная дивизия имени моей бабушки"
+            alt="Jack Daniels"
             className="artist__picture"
             src="https://api.adorable.io/avatars/128/2"
           />
-          Краснознаменная дивизия имени моей бабушки
+          Jack Daniels
         </label>
       </div>
       <div
@@ -145,11 +148,11 @@ exports[`Render App Render ArtistQuestionScreen 1`] = `
           htmlFor="answer-2"
         >
           <img
-            alt="Lorde"
+            alt="Jim Beam"
             className="artist__picture"
             src="https://api.adorable.io/avatars/128/3"
           />
-          Lorde
+          Jim Beam
         </label>
       </div>
     </form>
@@ -157,7 +160,7 @@ exports[`Render App Render ArtistQuestionScreen 1`] = `
 </section>
 `;
 
-exports[`Render App Render AuthorizationScreen 1`] = `
+exports[`Render App Render AuthScreen 1`] = `
 <section
   className="login"
 >
@@ -240,7 +243,7 @@ exports[`Render App Render AuthorizationScreen 1`] = `
 </section>
 `;
 
-exports[`Render App Render FailureScreen 1`] = `
+exports[`Render App Render GameOverScreen 1`] = `
 <section
   className="result"
 >
@@ -319,6 +322,12 @@ exports[`Render App Render GenreQuestionScreen 1`] = `
     <div
       className="game__mistakes"
     >
+      <div
+        className="wrong"
+      />
+      <div
+        className="wrong"
+      />
       <div
         className="wrong"
       />

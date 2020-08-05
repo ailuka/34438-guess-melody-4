@@ -1,9 +1,12 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import PropTypes from "prop-types";
 import withAudio from "./with-audio";
 
-const MockComponent = (props) => {
+interface MockComponentProps {
+  children: React.ReactNode;
+}
+
+const MockComponent = (props: MockComponentProps) => {
   const {children} = props;
 
   return (
@@ -13,20 +16,13 @@ const MockComponent = (props) => {
   );
 };
 
-MockComponent.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired
-};
-
 const MockComponentWrapped = withAudio(MockComponent);
 
 it(`withAudio is rendered correctly`, () => {
   const tree = renderer.create(
       <MockComponentWrapped
         isPlaying={false}
-        onPlayButtonClick={() => {}}
+        onPlayButtonClick={() => null}
         src={``}
       />, {
         createNodeMock() {

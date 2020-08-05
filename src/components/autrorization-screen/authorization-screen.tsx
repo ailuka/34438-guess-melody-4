@@ -1,11 +1,11 @@
 import * as React from "react";
 
 interface Props {
-  onSubmit: ({login, password}: {login: string, password: string}) => void;
+  onSubmit: ({login, password}: {login: string; password: string}) => void;
   onReplayButtonClick: () => void;
 }
 
-class AuthorizationScreen extends React.PureComponent<Props, unknown> {
+class AuthorizationScreen extends React.PureComponent<Props, {}> {
   private _loginRef: React.RefObject<HTMLInputElement>;
   private _passwordRef: React.RefObject<HTMLInputElement>;
 

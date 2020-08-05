@@ -7,9 +7,9 @@ interface Props {
 }
 
 interface State {
-  progress: number,
-  isLoading: boolean,
-  isPlaying: boolean,
+  progress: number;
+  isLoading: boolean;
+  isPlaying: boolean;
 }
 
 const withAudio = (Component) => {

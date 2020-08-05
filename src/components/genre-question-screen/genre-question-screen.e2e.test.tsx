@@ -1,40 +1,38 @@
 import * as React from "react";
-import Enzyme, {shallow, mount} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import {configure, shallow, mount} from "enzyme";
+import * as Adapter from "enzyme-adapter-react-16";
 import GenreQuestionScreen from "./genre-question-screen";
+import {GameType, QuestionGenre} from "../../types";
 
-Enzyme.configure({
+configure({
   adapter: new Adapter(),
 });
 
-const mock = {
-  question: {
-    type: `genre`,
-    genre: `rock`,
-    answers: [
-      {
-        src: `path`,
-        genre: `rock`,
-      },
-      {
-        src: `path`,
-        genre: `jazz`,
-      },
-      {
-        src: `path`,
-        genre: `jazz`,
-      },
-      {
-        src: `path`,
-        genre: `blues`,
-      },
-    ],
-  },
+const question: QuestionGenre = {
+  type: GameType.GENRE,
+  genre: `rock`,
+  answers: [
+    {
+      src: `path`,
+      genre: `rock`,
+    },
+    {
+      src: `path`,
+      genre: `jazz`,
+    },
+    {
+      src: `path`,
+      genre: `jazz`,
+    },
+    {
+      src: `path`,
+      genre: `blues`,
+    },
+  ],
 };
 
 describe(`GenreQuestionScreen`, () => {
   it(`When user answers genre question form is not sent`, () => {
-    const {question} = mock;
     const onAnswer = jest.fn();
 
     const genreQuestionScreen = shallow(
@@ -58,7 +56,6 @@ describe(`GenreQuestionScreen`, () => {
   });
 
   it(`User answer passed to callback is consistent with "userAnswer" prop`, () => {
-    const {question} = mock;
     const onAnswer = jest.fn((...args) => [...args]);
     const userAnswer = [false, true, false, false];
 
@@ -76,7 +73,7 @@ describe(`GenreQuestionScreen`, () => {
     const inputTwo = genreQuestionScreen.find(`input`).at(1);
 
     inputTwo.simulate(`change`, {target: {checked: true}});
-    form.simulate(`submit`, {preventDefault() {}});
+    form.simulate(`submit`, {});
 
     expect(onAnswer).toHaveBeenCalledTimes(1);
     expect(onAnswer.mock.calls[0][0]).toEqual(undefined);

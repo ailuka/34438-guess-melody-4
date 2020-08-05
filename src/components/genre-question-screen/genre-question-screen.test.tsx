@@ -1,9 +1,10 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
 import GenreQuestionScreen from "./genre-question-screen";
+import {GameType, QuestionGenre} from "../../types";
 
-const question = {
-  type: `genre`,
+const question: QuestionGenre = {
+  type: GameType.GENRE,
   genre: `rock`,
   answers: [{
     src: `https://upload.wikimedia.org/wikipedia/commons/3/38/Stalker-Last_Laugh.ogg`,

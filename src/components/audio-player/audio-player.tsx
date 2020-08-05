@@ -6,7 +6,7 @@ interface Props {
   onPlayButtonClick: () => void;
 }
 
-class AudioPlayer extends React.PureComponent<Props, unknown> {
+class AudioPlayer extends React.PureComponent<Props, {}> {
   render() {
     const {isLoading, isPlaying, onPlayButtonClick, children} = this.props;
 

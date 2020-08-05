@@ -1,14 +1,18 @@
 import * as React from "react";
-import PropTypes from "prop-types";
-import Enzyme, {mount} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import {configure, mount} from "enzyme";
+import * as Adapter from "enzyme-adapter-react-16";
 import withAudio from "./with-audio";
 
-Enzyme.configure({
+configure({
   adapter: new Adapter(),
 });
 
-const Player = (props) => {
+interface PlayerProps {
+  children: React.ReactNode;
+  onPlayButtonClick: () => void;
+}
+
+const Player = (props: PlayerProps) => {
   const {onPlayButtonClick, children} = props;
   return (
     <div>
@@ -20,19 +24,11 @@ const Player = (props) => {
   );
 };
 
-Player.propTypes = {
-  onPlayButtonClick: PropTypes.func.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired,
-};
-
 describe(`withAudioPlayer`, () => {
   it(`Checks that HOC's callback turn on audio (play)`, () => {
 
     const spyOnPlay = jest.spyOn(window.HTMLMediaElement.prototype, `play`)
-    .mockImplementation(() => {});
+    .mockImplementation(jest.fn());
 
     const PlayerWrapped = withAudio(Player);
 
